@@ -28,6 +28,7 @@ blue_controls = ControllerMapping(
 
 # Start Your Game Code Here!
 
+a=3
 
 hi
 
