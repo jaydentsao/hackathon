@@ -8,6 +8,16 @@ pygame.display.set_caption("Untitled 2.8.2025")
 font = pygame.font.Font(None, 36)
 clock = pygame.time.Clock()
 
+
+#Load images
+red_ninja = pygame.image.load("images/red_ninja.png").convert_alpha()
+blue_ninja = pygame.image.load("images/blue_ninja.png").convert_alpha()
+
+#Scale images
+red_ninja = pygame.transform.scale(red_ninja, (120, 90))
+blue_ninja = pygame.transform.scale(blue_ninja, (100, 100))
+
+
 # Keyboard Input Controllers for Local Testing
 red_controls = ControllerMapping(
     joystick_id=0,
@@ -28,15 +38,11 @@ blue_controls = ControllerMapping(
     },
     joystick_button_mappings={0: "a", 1: "b", 2: "x", 3: "y", 4: "start", 5: "select", 6: "quit"}
 )
-
 # Start Your Game Code Here!
 
 
 
-red_ninja = pygame.image.load("images/red_ninja.png").convert_alpha()
-blue_ninja = pygame.image.load("images/blue_ninja.png").convert_alpha()
-red_ninja = pygame.transform.scale(red_ninja, (120, 90))
-blue_ninja = pygame.transform.scale(blue_ninja, (100, 100))
+
 p1_pos = [screen.get_width() - red_ninja.get_width() - 110, screen.get_height() - red_ninja.get_height() - 100]
 p2_pos = [screen.get_width() - blue_ninja.get_width() - 110, screen.get_height() - blue_ninja.get_height() - 100]
 p1_vx=0
