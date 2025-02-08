@@ -1,0 +1,1 @@
+cp example_game/example_game.sh ../RetroPie/roms/pygame/
