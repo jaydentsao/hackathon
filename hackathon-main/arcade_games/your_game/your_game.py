@@ -14,8 +14,6 @@ BLUE = (0, 0, 255)
 GRAY = (100, 100, 100)
 
 #Load images
-beach_background = pygame.image.load("images/beach_background.png").convert()
-beach_background = pygame.transform.scale(beach_background, screen.get_size())  # Stretch background
 red_ninja = pygame.image.load("images/red_ninja.png").convert_alpha()
 blue_ninja = pygame.image.load("images/blue_ninja.png").convert_alpha()
 
@@ -23,7 +21,6 @@ blue_ninja = pygame.image.load("images/blue_ninja.png").convert_alpha()
 red_ninja = pygame.transform.scale(red_ninja, (120, 90))
 blue_ninja = pygame.transform.scale(blue_ninja, (100, 100))
 
-print('asdf')
 # Keyboard Input Controllers for Local Testing
 red_controls = ControllerMapping(
     joystick_id=0,
@@ -45,7 +42,6 @@ blue_controls = ControllerMapping(
     joystick_button_mappings={0: "a", 1: "b", 2: "x", 3: "y", 4: "start", 5: "select", 6: "quit"}
 )
 # Start Your Game Code Here!
-print('blm')
 
 
 
