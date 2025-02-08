@@ -8,8 +8,14 @@ pygame.display.set_caption("Untitled 2.8.2025")
 font = pygame.font.Font(None, 36)
 clock = pygame.time.Clock()
 
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+GRAY = (100, 100, 100)
 
 #Load images
+beach_background = pygame.image.load("images/beach_background.png").convert()
+beach_background = pygame.transform.scale(beach_background, screen.get_size())  # Stretch background
 red_ninja = pygame.image.load("images/red_ninja.png").convert_alpha()
 blue_ninja = pygame.image.load("images/blue_ninja.png").convert_alpha()
 
@@ -17,7 +23,7 @@ blue_ninja = pygame.image.load("images/blue_ninja.png").convert_alpha()
 red_ninja = pygame.transform.scale(red_ninja, (120, 90))
 blue_ninja = pygame.transform.scale(blue_ninja, (100, 100))
 
-
+print('asdf')
 # Keyboard Input Controllers for Local Testing
 red_controls = ControllerMapping(
     joystick_id=0,
@@ -39,7 +45,7 @@ blue_controls = ControllerMapping(
     joystick_button_mappings={0: "a", 1: "b", 2: "x", 3: "y", 4: "start", 5: "select", 6: "quit"}
 )
 # Start Your Game Code Here!
-
+print('blm')
 
 
 
@@ -53,12 +59,9 @@ p2_vy=0
 p2_dir= False #left
 
 
+
 running = True
 while running:
-
-    for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
     
     # Clear screen
     screen.fill((0, 0, 0))
@@ -87,10 +90,6 @@ while running:
     p1_pos[0] += int(blue_direction[0] * 5)
     p1_pos[1] += int(blue_direction[1] * 5)
 
-    
-
-    
-
     # Blue ninja actions
     if "left" in blue_actions:
         p1_pos[0]-=20
@@ -118,9 +117,10 @@ while running:
         pygame.display.flip()
         clock.tick(30)
 
+
     pygame.display.flip()
     clock.tick(60)
 
 
 # End Your Game Code Here
-pygame.quit()
+#pygame.quit()
