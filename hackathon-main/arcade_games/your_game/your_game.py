@@ -58,17 +58,16 @@ p2_vx=0
 p2_vy=0
 p2_dir= False #left
 
-
-
 running = True
 while running:
     
     # Clear screen
-    screen.fill((0, 0, 0))
-   # screen.blit(, (0, 0))
+    screen.fill((0, 0, 255))
+    screen.blit(beach_background, (0, 0))
 
     # Handle events
     for event in pygame.event.get():
+        print(event)
         if event.type == pygame.QUIT:
             running = False
 
@@ -81,7 +80,9 @@ while running:
     blue_actions = blue_controls.get_actions(keys)
 
     # Check for quit action
-    if "quit" in red_actions or "quit" in blue_actions:
+    if red_actions and "quit" in red_actions:
+        running = False
+    if blue_actions and "quit" in blue_actions:
         running = False
 
     # Update positions
@@ -123,4 +124,4 @@ while running:
 
 
 # End Your Game Code Here
-#pygame.quit()
+pygame.quit()
