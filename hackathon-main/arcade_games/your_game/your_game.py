@@ -19,7 +19,7 @@ beach_background = pygame.transform.scale(beach_background, screen.get_size())  
 red_ninja = pygame.image.load("images/red_ninja.png").convert_alpha()
 blue_ninja = pygame.image.load("images/blue_ninja.png").convert_alpha()
 
-#Scale images
+# #Scale images
 red_ninja = pygame.transform.scale(red_ninja, (120, 90))
 blue_ninja = pygame.transform.scale(blue_ninja, (100, 100))
 
@@ -59,11 +59,11 @@ p2_vy=0
 p2_dir= False #left
 
 running = True
+
 while running:
     
     # Clear screen
     screen.fill((0, 0, 255))
-    screen.blit(beach_background, (0, 0))
 
     # Handle events
     for event in pygame.event.get():
