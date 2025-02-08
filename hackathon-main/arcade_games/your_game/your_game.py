@@ -30,14 +30,22 @@ blue_controls = ControllerMapping(
 )
 
 # Start Your Game Code Here!
-p1_pos=[]
-p1_dir= True #right
-p2_pos=[]
-p2_dir= False #left
+
+
+
 red_ninja = pygame.image.load("images/red_ninja.png").convert_alpha()
 blue_ninja = pygame.image.load("images/blue_ninja.png").convert_alpha()
 red_ninja = pygame.transform.scale(red_ninja, (120, 90))
 blue_ninja = pygame.transform.scale(blue_ninja, (100, 100))
+p1_pos = [screen.get_width() - red_ninja.get_width() - 110, screen.get_height() - red_ninja.get_height() - 100]
+p2_pos = [screen.get_width() - blue_ninja.get_width() - 110, screen.get_height() - blue_ninja.get_height() - 100]
+p1_vx=0
+p1_vy=0
+p1_dir= True #right
+p2_vx=0
+p2_vy=0
+p2_dir= False #left
+
 
 running = True
 while running:
@@ -68,46 +76,41 @@ while running:
         running = False
 
     # Update positions
-    # red_pos[0] += int(red_direction[0] * 5)
-    # red_pos[1] += int(red_direction[1] * 5)
-    # blue_pos[0] += int(blue_direction[0] * 5)
-    # blue_pos[1] += int(blue_direction[1] * 5)
+    p2_pos[0] += int(red_direction[0] * 5)
+    p2_pos[1] += int(red_direction[1] * 5)
+    p1_pos[0] += int(blue_direction[0] * 5)
+    p1_pos[1] += int(blue_direction[1] * 5)
 
     
 
     
 
     # Blue ninja actions
-    if "a" in blue_actions:
-        blue_pos[1] -= 20  # ninja jumps up
+    if "left" in blue_actions:
+        p1_pos[0]-=20
+    if "right" in blue_actions:
+        p1_pos[0]+=20
+    if "up" in blue_actions:
+        p1_pos[1] -= 20  # ninja jumps up
+    
     if "b" in blue_actions:
-        for angle in range(0, 361, 15):  # Rotate in increments for smooth animation
-            screen.blit(beach_background, (0, 0))
-            screen.blit(red_ninja, red_pos)
-            screen.blit(ninja_ship, ship_pos)
-            rotated_blue_ninja = pygame.transform.rotate(blue_ninja, angle)
-            rect = rotated_blue_ninja.get_rect(center=(blue_pos[0] + 50, blue_pos[1] + 50))
-            screen.blit(rotated_blue_ninja, rect.topleft)
-            pygame.display.flip()
-            clock.tick(30)
+        screen.blit(blue_ninja, p1_pos)
+        pygame.display.flip()
+        clock.tick(30)
+    
 
-    if "" in blue_actions:
-        p1_dir = True
+   
     # Red ninja actions
-    if "a" in red_actions:
-        red_pos[1] -= 20  # ninja jumps up
-
+    if "left" in red_actions:
+        p2_pos[0] -= 20
+    if "right" in red_actions:
+        p2_pos[0] += 20
+    if "up" in red_actions:
+        p2_pos[1] -= 20  # ninja jumps up
     if "b" in red_actions:
-        for angle in range(0, 361, 15):  # Rotate in increments for smooth animation
-            screen.blit(beach_background, (0, 0))
-            screen.blit(keyboard_mapping, keyboard_mapping_pos)
-            screen.blit(blue_ninja, blue_pos)
-            screen.blit(ninja_ship, ship_pos)
-            rotated_red_ninja = pygame.transform.rotate(red_ninja, angle)
-            rect = rotated_red_ninja.get_rect(center=(red_pos[0] + 60, red_pos[1] + 45))
-            screen.blit(rotated_red_ninja, rect.topleft)
-            pygame.display.flip()
-            clock.tick(30)
+        screen.blit(red_ninja, p2_pos)
+        pygame.display.flip()
+        clock.tick(30)
 
     pygame.display.flip()
     clock.tick(60)
