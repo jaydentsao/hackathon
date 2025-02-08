@@ -31,7 +31,13 @@ blue_controls = ControllerMapping(
 
 # Start Your Game Code Here!
 p1_pos=[]
+p1_dir= True #right
 p2_pos=[]
+p2_dir= False #left
+red_ninja = pygame.image.load("images/red_ninja.png").convert_alpha()
+blue_ninja = pygame.image.load("images/blue_ninja.png").convert_alpha()
+red_ninja = pygame.transform.scale(red_ninja, (120, 90))
+blue_ninja = pygame.transform.scale(blue_ninja, (100, 100))
 
 running = True
 while running:
@@ -77,7 +83,6 @@ while running:
     if "b" in blue_actions:
         for angle in range(0, 361, 15):  # Rotate in increments for smooth animation
             screen.blit(beach_background, (0, 0))
-            screen.blit(keyboard_mapping, keyboard_mapping_pos)
             screen.blit(red_ninja, red_pos)
             screen.blit(ninja_ship, ship_pos)
             rotated_blue_ninja = pygame.transform.rotate(blue_ninja, angle)
@@ -85,6 +90,9 @@ while running:
             screen.blit(rotated_blue_ninja, rect.topleft)
             pygame.display.flip()
             clock.tick(30)
+
+    if "" in blue_actions:
+        p1_dir = True
     # Red ninja actions
     if "a" in red_actions:
         red_pos[1] -= 20  # ninja jumps up
